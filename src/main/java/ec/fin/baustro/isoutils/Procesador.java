@@ -24,6 +24,12 @@ public class Procesador implements ISORequestListener {
                 isoSource.send(response);
                 log.info("trama respuesta : {}",ISOUtil.byte2hex( response.pack()));
 
+            }else if (isoMsg.getMTI().compareTo("0100") == 0) {
+                response = procesarAustro(isoMsg);
+                response.setPackager((ISOBasePackager) isoMsg.getPackager());
+                isoSource.send(response);
+                log.info("trama respuesta : {}",ISOUtil.byte2hex( response.pack()));
+
             }
         } catch (ISOException e) {
             throw new RuntimeException(e);

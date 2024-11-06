@@ -53,10 +53,11 @@ public class Server {
         }
 
     }
-    public Server(int port, String definicion){
+    public Server(int port, String definicion ,String Headertpdu){
         this.port=port;
         this.definicion=definicion;
-        byte[] tpduCliente = ISOUtil.hex2byte("6080000001");
+
+        byte[] tpduCliente = ISOUtil.hex2byte(Headertpdu);
         try {
             packager = new GenericPackager(dirDefiniciones + definicion);
             canal = new NACChannel(packager, tpduCliente);
@@ -67,13 +68,14 @@ public class Server {
                 public void actionPerformed(ActionEvent e) {
                 }
             });
-            NameRegistrar.register("timer1", timer1);
+            log.debug("inicio de servidor port: {} definicion {}",port,definicion);
+            NameRegistrar.register("timer1"+definicion, timer1);
             timer1.setRepeats(true);
             timer1.start();
             hilo = new Thread(this.server);
-            this.hilo.setName("IsoServer");
+            this.hilo.setName("IsoServer"+definicion);
             this.hilo.start();
-            log.debug("inicio de servidor port: {} definicion {}",port,definicion);
+
         } catch (ISOException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

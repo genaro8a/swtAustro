@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class ServerRequest {
     private int port;
     private  String definicion;
+    private  String headertpdu;
 }

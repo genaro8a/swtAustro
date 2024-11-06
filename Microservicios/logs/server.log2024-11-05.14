@@ -1,3 +1,0 @@
-2024-11-05 13:14:13,771 INFO  [io.quarkus                                   ] [printStartupTime             (Linea  109)] [Quarkus Main Thread       ]      swtaustro 1.0-SNAPSHOT on JVM (powered by Quarkus 3.16.1) started in 2.258s. Listening on: http://localhost:8080
-2024-11-05 13:14:13,774 INFO  [io.quarkus                                   ] [printStartupTime             (Linea  113)] [Quarkus Main Thread       ]      Profile dev activated. Live Coding activated.
-2024-11-05 13:14:13,774 INFO  [io.quarkus                                   ] [printStartupTime             (Linea  115)] [Quarkus Main Thread       ]      Installed features: [cdi, rest, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]

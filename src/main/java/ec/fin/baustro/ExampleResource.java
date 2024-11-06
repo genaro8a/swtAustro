@@ -41,32 +41,32 @@ public class ExampleResource {
                                     @ExampleObject(
                                             name = "pos.xml",
                                             summary = "Puerto 8900 con definición 'pos.xml'",
-                                            value = "{\"port\": 8900, \"definicion\": \"pos.xml\"}"
+                                            value = "{\"port\": 8900, \"definicion\": \"pos.xml\",\"headertpdu\": \"6000038000\"}"
                                     )
                                     ,@ExampleObject(
                                             name = "1-alignet.xml",
                                             summary = "Puerto 8901 con definición '1-alignet.xml'",
-                                            value = "{\"port\": 8901, \"definicion\": \"1-alignet.xml\"}"
+                                            value = "{\"port\": 8901, \"definicion\": \"1-alignet.xml\",\"headertpdu\": \"160102003c5000000000000000000000000000000000\"}"
                                     ),
                                     @ExampleObject(
                                             name = "2-fullcarga.xml",
                                             summary = "Puerto 8902 con definición '2-fullcarga.xml'",
-                                            value = "{\"port\": 8902, \"definicion\": \"2-fullcarga.xml\"}"
+                                            value = "{\"port\": 8902, \"definicion\": \"2-fullcarga.xml\",\"Headertpdu\": \"160102003c5000000000000000000000000000000000\"}"
                                     ),
                                     @ExampleObject(
                                             name = "3-IATA.xml",
                                             summary = "Puerto 8903 con definición '3-IATA.xml'",
-                                            value = "{\"port\": 8903, \"definicion\": \"3-IATA.xml\"}"
+                                            value = "{\"port\": 8903, \"definicion\": \"3-IATA.xml\",\"Headertpdu\": \"160102003c5000000000000000000000000000000000\"}"
                                     ),
                                     @ExampleObject(
                                             name = "4-visa-Franquicia-ba.xml",
                                             summary = "Puerto 8904 con definición '4-visa-Franquicia-ba.xml'",
-                                            value = "{\"port\": 8904, \"definicion\": \"4-visa-Franquicia-ba.xml\"}"
+                                            value = "{\"port\": 8904, \"definicion\": \"4-visa-Franquicia-ba.xml\",\"Headertpdu\": \"160102003c5000000000000000000000000000000000\" }"
                                     ),
                                     @ExampleObject(
                                             name = "5-Mastercard-Franquicia-ba.xml",
                                             summary = "Puerto 8905 con definición '5-Mastercard-Franquicia-ba.xml'",
-                                            value = "{\"port\": 8905, \"definicion\": \"5-Mastercard-Franquicia-ba.xml\"}"
+                                            value = "{\"port\": 8905, \"definicion\": \"5-Mastercard-Franquicia-ba.xml\",\"Headertpdu\": \"0\"}"
                                     )
                             }
                     )
@@ -74,8 +74,8 @@ public class ExampleResource {
             ServerRequest request) {
 
         try {
-            Server server = new Server(request.getPort()    , request.getDefinicion());
-            log.info("inicio de servicio");
+            Server server = new Server(request.getPort()    , request.getDefinicion(),request.getHeadertpdu());
+            log.info("inicio de servicio puerto:{} definicion:{} header:{}",request.getPort(),request.getDefinicion(),request.getHeadertpdu());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
